@@ -48,7 +48,7 @@ ruleset2rule(statement: ref Statement.Ruleset, onto: list of (string, list of De
 	for (sels := statement.selectors; sels != nil; sels = tl sels) {
 		csel := hd sels;
 		if (len csel != 1) {
-			warning("context-specific selectors not allowed");
+			# warning("context-specific selectors not allowed");
 			continue;
 		}
 		(nil, l) := hd csel;
@@ -119,6 +119,10 @@ selector2name(sel: list of ref Select): string
 		pick v := hd sel {
 		Element =>
 			tag = v.name;
+		ID =>
+			class = "#" + v.name;
+		Any =>
+			tag = "*";
 		Class =>
 			class = "." + v.name;
 		Pseudo =>

@@ -1626,7 +1626,7 @@ blankpage: Page;
 Page.new(win: ref Tk->Toplevel, w: string): ref Page
 {
 	cmd(win, "canvas " + w + " -bg white");
-	col := cmd(win, w + " cget -bg");
+	col := "white";
 	cmd(win, w + " create rectangle -1 -1 -1 -1 -fill " + col + " -outline " + col + " -tags conceal");
 	p := ref blankpage;
 	p.win = win;
